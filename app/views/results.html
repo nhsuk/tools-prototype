@@ -14,6 +14,8 @@
 <!-- Your page content goes inside the content block -->
 <!-- More info and code for the page layout can be found at https://beta.nhs.uk/service-manual/styles-components-patterns/layout -->
 {% block content %}
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds">
 	{{ backLink({
 		"text": "Go back",
 		"href": "javascript:history.back()"
@@ -161,4 +163,6 @@
 		<div class="js-links-high"></div>
 	</section>
 
+  </div>
+</div>
 {% endblock %}
