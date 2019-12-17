@@ -1,25 +1,445 @@
-<!-- Extends the layout from /views/layout.html -->
 {% extends 'layout.html' %}
 
-<!-- Set the page title inside the pageTitle block -->
-{% block pageTitle %}
-  Content page example - NHS.UK prototype kit
+{% block header %}
+<header class="nhsuk-header" role="banner">
+  <div class="nhsuk-width-container nhsuk-header__container">
+    <div class="nhsuk-header__logo">
+      <a class="nhsuk-header__link" href="/" aria-label="NHS homepage">
+        <svg class="nhsuk-logo" xmlns="http://www.w3.org/2000/svg" role="presentation" focusable="false" viewBox="0 0 40 16">
+          <path class="nhsuk-logo__background" d="M0 0h40v16H0z"></path>
+          <path class="nhsuk-logo__text" d="M3.9 1.5h4.4l2.6 9h.1l1.8-9h3.3l-2.8 13H9l-2.7-9h-.1l-1.8 9H1.1M17.3 1.5h3.6l-1 4.9h4L25 1.5h3.5l-2.7 13h-3.5l1.1-5.6h-4.1l-1.2 5.6h-3.4M37.7 4.4c-.7-.3-1.6-.6-2.9-.6-1.4 0-2.5.2-2.5 1.3 0 1.8 5.1 1.2 5.1 5.1 0 3.6-3.3 4.5-6.4 4.5-1.3 0-2.9-.3-4-.7l.8-2.7c.7.4 2.1.7 3.2.7s2.8-.2 2.8-1.5c0-2.1-5.1-1.3-5.1-5 0-3.4 2.9-4.4 5.8-4.4 1.6 0 3.1.2 4 .6"></path>
+          <image src="https://assets.nhs.uk/images/nhs-logo.png" xlink:href=""></image>
+        </svg>
+      </a>
+    </div>
+    <div class="nhsuk-header__content" id="content-header">
+      <div class="nhsuk-header__menu">
+        <button class="nhsuk-header__menu-toggle" id="toggle-menu" aria-controls="header-navigation" aria-label="Open menu">Menu</button>
+      </div>
+      <div class="nhsuk-header__search">
+        <button class="nhsuk-header__search-toggle" id="toggle-search" aria-controls="search" aria-label="Open search">
+          <svg class="nhsuk-icon nhsuk-icon__search" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M19.71 18.29l-4.11-4.1a7 7 0 1 0-1.41 1.41l4.1 4.11a1 1 0 0 0 1.42 0 1 1 0 0 0 0-1.42zM5 10a5 5 0 1 1 5 5 5 5 0 0 1-5-5z"></path>
+          </svg>
+          <span class="nhsuk-u-visually-hidden">Search</span>
+        </button>
+        <div class="nhsuk-header__search-wrap" id="wrap-search">
+          <form class="nhsuk-header__search-form" id="search" action="https://www.nhs.uk/search/" method="get" role="search">
+            <label class="nhsuk-u-visually-hidden" for="search-field">Search the NHS website</label>
+            <div class="autocomplete-container" id="autocomplete-container"></div>
+            <input class="nhsuk-search__input" id="search-field" name="q" type="search" placeholder="Search" autocomplete="off">
+            <button class="nhsuk-search__submit" type="submit">
+              <svg class="nhsuk-icon nhsuk-icon__search" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M19.71 18.29l-4.11-4.1a7 7 0 1 0-1.41 1.41l4.1 4.11a1 1 0 0 0 1.42 0 1 1 0 0 0 0-1.42zM5 10a5 5 0 1 1 5 5 5 5 0 0 1-5-5z"></path>
+              </svg>
+              <span class="nhsuk-u-visually-hidden">Search</span>
+            </button>
+            <button class="nhsuk-search__close" id="close-search">
+              <svg class="nhsuk-icon nhsuk-icon__close" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M13.41 12l5.3-5.29a1 1 0 1 0-1.42-1.42L12 10.59l-5.29-5.3a1 1 0 0 0-1.42 1.42l5.3 5.29-5.3 5.29a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l5.29-5.3 5.29 5.3a1 1 0 0 0 1.42 0 1 1 0 0 0 0-1.42z"></path>
+              </svg>
+              <span class="nhsuk-u-visually-hidden">Close search</span>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <nav class="nhsuk-header__navigation" id="header-navigation" role="navigation" aria-label="Primary navigation" aria-labelledby="label-navigation">
+    <div class="nhsuk-width-container">
+      <p class="nhsuk-header__navigation-title">
+        <span id="label-navigation">Menu</span>
+        <button class="nhsuk-header__navigation-close" id="close-menu">
+          <svg class="nhsuk-icon nhsuk-icon__close" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M13.41 12l5.3-5.29a1 1 0 1 0-1.42-1.42L12 10.59l-5.29-5.3a1 1 0 0 0-1.42 1.42l5.3 5.29-5.3 5.29a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l5.29-5.3 5.29 5.3a1 1 0 0 0 1.42 0 1 1 0 0 0 0-1.42z"></path>
+          </svg>
+          <span class="nhsuk-u-visually-hidden">Close menu</span>
+        </button>
+      </p>
+      <ul class="nhsuk-header__navigation-list">
+        <li class="nhsuk-header__navigation-item nhsuk-header__navigation-item--for-mobile">
+          <a class="nhsuk-header__navigation-link" href="/">
+            Home
+            <svg class="nhsuk-icon nhsuk-icon__chevron-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M15.5 12a1 1 0 0 1-.29.71l-5 5a1 1 0 0 1-1.42-1.42l4.3-4.29-4.3-4.29a1 1 0 0 1 1.42-1.42l5 5a1 1 0 0 1 .29.71z"></path>
+            </svg>
+          </a>
+        </li>
+        <li class="nhsuk-header__navigation-item">
+          <a class="nhsuk-header__navigation-link" href="https://www.nhs.uk/conditions">
+            Health A-Z
+            <svg class="nhsuk-icon nhsuk-icon__chevron-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M15.5 12a1 1 0 0 1-.29.71l-5 5a1 1 0 0 1-1.42-1.42l4.3-4.29-4.3-4.29a1 1 0 0 1 1.42-1.42l5 5a1 1 0 0 1 .29.71z"></path>
+            </svg>
+          </a>
+        </li>
+        <li class="nhsuk-header__navigation-item">
+          <a class="nhsuk-header__navigation-link" href="https://www.nhs.uk/live-well/">
+            Live Well
+            <svg class="nhsuk-icon nhsuk-icon__chevron-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M15.5 12a1 1 0 0 1-.29.71l-5 5a1 1 0 0 1-1.42-1.42l4.3-4.29-4.3-4.29a1 1 0 0 1 1.42-1.42l5 5a1 1 0 0 1 .29.71z"></path>
+            </svg>
+          </a>
+        </li>
+        <li class="nhsuk-header__navigation-item">
+          <a class="nhsuk-header__navigation-link" href="https://www.nhs.uk/conditions/social-care-and-support/">
+            Care and support
+            <svg class="nhsuk-icon nhsuk-icon__chevron-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M15.5 12a1 1 0 0 1-.29.71l-5 5a1 1 0 0 1-1.42-1.42l4.3-4.29-4.3-4.29a1 1 0 0 1 1.42-1.42l5 5a1 1 0 0 1 .29.71z"></path>
+            </svg>
+          </a>
+        </li>
+        <li class="nhsuk-header__navigation-item">
+          <a class="nhsuk-header__navigation-link" href="https://www.nhs.uk/news/">
+            Health news
+            <svg class="nhsuk-icon nhsuk-icon__chevron-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M15.5 12a1 1 0 0 1-.29.71l-5 5a1 1 0 0 1-1.42-1.42l4.3-4.29-4.3-4.29a1 1 0 0 1 1.42-1.42l5 5a1 1 0 0 1 .29.71z"></path>
+            </svg>
+          </a>
+        </li>
+        <li class="nhsuk-header__navigation-item">
+          <a class="nhsuk-header__navigation-link" href="https://www.nhs.uk/service-search">
+            Services near you
+            <svg class="nhsuk-icon nhsuk-icon__chevron-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M15.5 12a1 1 0 0 1-.29.71l-5 5a1 1 0 0 1-1.42-1.42l4.3-4.29-4.3-4.29a1 1 0 0 1 1.42-1.42l5 5a1 1 0 0 1 .29.71z"></path>
+            </svg>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</header>
 {% endblock %}
 
-<!-- Your page content goes inside the content block -->
-<!-- More info and code for the page layout can be found at https://beta.nhs.uk/service-manual/styles-components-patterns/layout -->
+{% block pageTitle %}
+  Mood self-assessment - NHS
+{% endblock %}
+
+{% block beforeContent %}
+<nav class="nhsuk-breadcrumb" aria-label="Breadcrumb">
+  <div class="nhsuk-width-container">
+    <ol class="nhsuk-breadcrumb__list">
+      <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="/level-one">Home</a></li>
+      <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="/level-one/level-two">Health A to Z</a></li>
+      <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="/level-one/level-two/level-three">Mental health and wellbeing</a></li>
+    </ol>
+    <p class="nhsuk-breadcrumb__back"><a class="nhsuk-breadcrumb__backlink" href="/level-one/level-two/level-three">Back to Mental health and wellbeing</a></p>
+  </div>
+</nav>
+{% endblock %}
+
 {% block content %}
-	<h1>Mood self-assessment quiz</h1>
-	<p>When it comes to emotions, it can sometimes be hard to recognise or admit that we're not feeling 100%.
-	<p>If you’re 16 or over, this mood self-assessment can:
-	<ul>
-		<li>help you better understand how you've been feeling over the last 2 weeks</li>
-		<li>point you in the right direction for helpful advice and information</li>
-	</ul>
-	<p>It’s not meant to replace an appointment with a GP. If you’re struggling, it’s best to speak to someone.</p>
-	<p>If you’re under 16, the <a href="https://youngminds.org.uk/">Young Minds website</a> can offer help and support for young people’s mental health.</p>
-	{{ actionLink({
-		"text": "Start mood self-assessment quiz",
-		"href": "/1"
-	}) }}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+      <h1>Mood self-assessment quiz</h1>
+    </div>
+  </div>
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+      <p>When it comes to emotions, it can sometimes be hard to recognise or admit that we're not feeling 100%.</p>
+      <p>If you’re 16 or over, this mood self-assessment can:</p>
+      <ul>
+        <li>help you better understand how you've been feeling over the last 2 weeks</li>
+        <li>point you in the right direction for helpful advice and information</li>
+      </ul>
+      <p>It’s not meant to replace an appointment with a GP. If you’re struggling, it’s best to speak to someone.</p>
+      <p>If you’re under 16, the <a href="https://youngminds.org.uk/">Young Minds website</a> can offer help and support for young people’s mental health.</p>
+
+      <div class="nhsuk-action-link">
+        <a class="nhsuk-action-link__link" href="/1">
+          <svg class="nhsuk-icon nhsuk-icon__arrow-right-circle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M0 0h24v24H0z" fill="none"></path>
+            <path d="M12 2a10 10 0 0 0-9.95 9h11.64L9.74 7.05a1 1 0 0 1 1.41-1.41l5.66 5.65a1 1 0 0 1 0 1.42l-5.66 5.65a1 1 0 0 1-1.41 0 1 1 0 0 1 0-1.41L13.69 13H2.05A10 10 0 1 0 12 2z"></path>
+          </svg>
+          <span class="nhsuk-action-link__text">Start mood self-assessment quiz</span>
+        </a>
+      </div>
+
+      <h2>Struggling to speak to someone?</h2>
+      <p>If you're struggling, it's best to speak to someone.</p>
+      <p>You can call <a href="https://www.samaritans.org/how-we-can-help/contact-samaritan/">Samaritans</a> free on <a href="tel: 116 123">116 123</a> if you want to talk to someone now.</p>
+
+      <div class="nhsuk-review-date">
+        <p class="nhsuk-body-s">
+          Page last reviewed: 10 December 2019<br>
+          Next review due: 10 December 2021
+        </p>
+      </div>
+
+      <div class="nhsuk-back-link">
+        <a class="nhsuk-back-link__link" href="#">
+          <svg class="nhsuk-icon nhsuk-icon__chevron-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M8.5 12c0-.3.1-.5.3-.7l5-5c.4-.4 1-.4 1.4 0s.4 1 0 1.4L10.9 12l4.3 4.3c.4.4.4 1 0 1.4s-1 .4-1.4 0l-5-5c-.2-.2-.3-.4-.3-.7z"></path>
+          </svg>
+          Back to Mental health and wellbeing
+        </a>
+      </div>
+
+    </div>
+
+    <aside class="nhsuk-grid-column-one-third">
+      <div class="nhsuk-related-nav">
+        <h2 class="nhsuk-related-nav__heading">
+          Mental health and wellbeing
+        </h2>
+        <nav role="navigation" class="nhsuk-related-nav__nav-section">
+          <h3 class="nhsuk-related-nav__sub-heading">Help with stress, anxiety or depression</h3>
+          <ul class="nhsuk-related-nav__list nhsuk-related-nav__list--sub">
+            <li class="nhsuk-related-nav__item">
+              <a class="nhsuk-related-nav__link" href="/conditions/stress-anxiety-depression/understanding-stress/">
+              Stress
+              </a>
+            </li>
+            <li class="nhsuk-related-nav__item">
+              <a class="nhsuk-related-nav__link" href="/conditions/stress-anxiety-depression/understanding-panic/">
+              Anxiety, fear and panic
+              </a>
+            </li>
+            <li class="nhsuk-related-nav__item">
+              <a class="nhsuk-related-nav__link" href="/conditions/stress-anxiety-depression/low-mood-and-depression/">
+              Low mood, sadness and depression
+              </a>
+            </li>
+          </ul>
+          <h3 class="nhsuk-related-nav__sub-heading">Help with other common feelings</h3>
+          <ul class="nhsuk-related-nav__list nhsuk-related-nav__list--sub">
+            <li class="nhsuk-related-nav__item">
+              <a class="nhsuk-related-nav__link" href="/conditions/stress-anxiety-depression/feeling-lonely/">
+              Feeling lonely
+              </a>
+            </li>
+            <li class="nhsuk-related-nav__item">
+              <a class="nhsuk-related-nav__link" href="/conditions/stress-anxiety-depression/coping-with-bereavement/">
+              Grief after bereavement or loss
+              </a>
+            </li>
+            <li class="nhsuk-related-nav__item">
+              <a class="nhsuk-related-nav__link" href="/conditions/stress-anxiety-depression/controlling-anger/">
+              Anger
+              </a>
+            </li>
+          </ul>
+          <h3 class="nhsuk-related-nav__sub-heading">I'm not sure how I feel</h3>
+          <ul class="nhsuk-related-nav__list nhsuk-related-nav__list--sub">
+          </ul>
+          <h3 class="nhsuk-related-nav__sub-heading">Your mental wellbeing</h3>
+          <ul class="nhsuk-related-nav__list nhsuk-related-nav__list--sub">
+            <li class="nhsuk-related-nav__item">
+              <a class="nhsuk-related-nav__link" href="/conditions/stress-anxiety-depression/improve-mental-wellbeing/">
+              5 steps to mental wellbeing
+              </a>
+            </li>
+            <li class="nhsuk-related-nav__item">
+              <a class="nhsuk-related-nav__link" href="/conditions/stress-anxiety-depression/mindfulness/">
+              Mindfulness
+              </a>
+            </li>
+            <li class="nhsuk-related-nav__item">
+              <a class="nhsuk-related-nav__link" href="/conditions/stress-anxiety-depression/moodzone-mental-wellbeing-audio-guides/">
+              Mental wellbeing audio guides
+              </a>
+            </li>
+          </ul>
+          <h3 class="nhsuk-related-nav__sub-heading">Improve low mood</h3>
+          <ul class="nhsuk-related-nav__list nhsuk-related-nav__list--sub">
+            <li class="nhsuk-related-nav__item">
+              <a class="nhsuk-related-nav__link" href="/conditions/stress-anxiety-depression/feel-better-and-happy/">
+              How to be happier
+              </a>
+            </li>
+            <li class="nhsuk-related-nav__item">
+              <a class="nhsuk-related-nav__link" href="/conditions/stress-anxiety-depression/raising-low-self-esteem/">
+              Raising low self-esteem
+              </a>
+            </li>
+          </ul>
+          <h3 class="nhsuk-related-nav__sub-heading">Reduce stress</h3>
+          <ul class="nhsuk-related-nav__list nhsuk-related-nav__list--sub">
+            <li class="nhsuk-related-nav__item">
+              <a class="nhsuk-related-nav__link" href="/conditions/stress-anxiety-depression/reduce-stress/">
+              10 stress busters
+              </a>
+            </li>
+            <li class="nhsuk-related-nav__item">
+              <a class="nhsuk-related-nav__link" href="/conditions/stress-anxiety-depression/ways-relieve-stress/">
+              Breathing exercise for stress
+              </a>
+            </li>
+            <li class="nhsuk-related-nav__item">
+              <a class="nhsuk-related-nav__link" href="/conditions/stress-anxiety-depression/time-management-tips/">
+              Easy time-management tips
+              </a>
+            </li>
+            <li class="nhsuk-related-nav__item">
+              <a class="nhsuk-related-nav__link" href="/conditions/stress-anxiety-depression/coping-with-financial-worries/">
+              How to cope with money worries
+              </a>
+            </li>
+          </ul>
+          <h3 class="nhsuk-related-nav__sub-heading">Depression support</h3>
+          <ul class="nhsuk-related-nav__list nhsuk-related-nav__list--sub">
+            <li class="nhsuk-related-nav__item">
+              <a class="nhsuk-related-nav__link" href="/conditions/stress-anxiety-depression/dealing-with-depression/">
+              Tips for coping with depression
+              </a>
+            </li>
+            <li class="nhsuk-related-nav__item">
+              <a class="nhsuk-related-nav__link" href="/conditions/stress-anxiety-depression/signs-someone-is-depressed/">
+              How to help someone with depression
+              </a>
+            </li>
+            <li class="nhsuk-related-nav__item">
+              <a class="nhsuk-related-nav__link" href="/conditions/stress-anxiety-depression/exercise-for-depression/">
+              Exercise for depression
+              </a>
+            </li>
+          </ul>
+          <h3 class="nhsuk-related-nav__sub-heading">Mental health at work</h3>
+          <ul class="nhsuk-related-nav__list nhsuk-related-nav__list--sub">
+            <li class="nhsuk-related-nav__item">
+              <a class="nhsuk-related-nav__link" href="/conditions/stress-anxiety-depression/bullying-at-work/">
+              Bullying at work
+              </a>
+            </li>
+            <li class="nhsuk-related-nav__item">
+              <a class="nhsuk-related-nav__link" href="/conditions/stress-anxiety-depression/returning-to-work-after-mental-health-issues/">
+              Going to work after mental health issues
+              </a>
+            </li>
+          </ul>
+          <h3 class="nhsuk-related-nav__sub-heading">Talking therapies and counselling</h3>
+          <ul class="nhsuk-related-nav__list nhsuk-related-nav__list--sub">
+            <li class="nhsuk-related-nav__item">
+              <a class="nhsuk-related-nav__link" href="/conditions/stress-anxiety-depression/types-of-therapy/">
+              Types of talking therapies
+              </a>
+            </li>
+            <li class="nhsuk-related-nav__item">
+              <a class="nhsuk-related-nav__link" href="/conditions/stress-anxiety-depression/benefits-of-talking-therapy/">
+              Benefits of talking therapy
+              </a>
+            </li>
+            <li class="nhsuk-related-nav__item">
+              <a class="nhsuk-related-nav__link" href="/conditions/stress-anxiety-depression/self-help-therapies/">
+              Self-help therapies
+              </a>
+            </li>
+            <li class="nhsuk-related-nav__item">
+              <a class="nhsuk-related-nav__link" href="/conditions/stress-anxiety-depression/free-therapy-or-counselling/">
+              Can I get free therapy or counselling?
+              </a>
+            </li>
+          </ul>
+          <h3 class="nhsuk-related-nav__sub-heading">Helplines and support groups</h3>
+          <ul class="nhsuk-related-nav__list nhsuk-related-nav__list--sub">
+            <li class="nhsuk-related-nav__item">
+              <a class="nhsuk-related-nav__link" href="/conditions/stress-anxiety-depression/mental-health-helplines/">
+              Mental health helplines
+              </a>
+            </li>
+            <li class="nhsuk-related-nav__item">
+              <a class="nhsuk-related-nav__link" href="/conditions/stress-anxiety-depression/depression-help-groups/">
+              Depression support groups
+              </a>
+            </li>
+            <li class="nhsuk-related-nav__item">
+              <a class="nhsuk-related-nav__link" href="/conditions/stress-anxiety-depression/mental-health-issues-if-you-are-gay-lesbian-or-bisexual/">
+              Mental health issues if you're gay, lesbian, bisexual or trans
+              </a>
+            </li>
+            <li class="nhsuk-related-nav__item">
+              <a class="nhsuk-related-nav__link" href="/conditions/stress-anxiety-depression/loneliness-in-older-people/">
+              Loneliness in older people
+              </a>
+            </li>
+            <li class="nhsuk-related-nav__item">
+              <a class="nhsuk-related-nav__link" href="/conditions/stress-anxiety-depression/loneliness-in-the-elderly-how-to-help/">
+              Loneliness in the elderly: how to help
+              </a>
+            </li>
+          </ul>
+          <h3 class="nhsuk-related-nav__sub-heading">Children's mental health</h3>
+          <ul class="nhsuk-related-nav__list nhsuk-related-nav__list--sub">
+            <li class="nhsuk-related-nav__item">
+              <a class="nhsuk-related-nav__link" href="/conditions/stress-anxiety-depression/talking-to-children-about-feelings/">
+              Talking to children about feelings
+              </a>
+            </li>
+            <li class="nhsuk-related-nav__item">
+              <a class="nhsuk-related-nav__link" href="/conditions/stress-anxiety-depression/children-depressed-signs/">
+              Depression in children and teenagers
+              </a>
+            </li>
+            <li class="nhsuk-related-nav__item">
+              <a class="nhsuk-related-nav__link" href="/conditions/stress-anxiety-depression/anxiety-in-children/">
+              Anxiety in children
+              </a>
+            </li>
+            <li class="nhsuk-related-nav__item">
+              <a class="nhsuk-related-nav__link" href="/conditions/stress-anxiety-depression/dealing-with-angry-child/">
+              Dealing with child anger
+              </a>
+            </li>
+            <li class="nhsuk-related-nav__item">
+              <a class="nhsuk-related-nav__link" href="/conditions/stress-anxiety-depression/children-and-bereavement/">
+              Children and bereavement
+              </a>
+            </li>
+          </ul>
+          <h3 class="nhsuk-related-nav__sub-heading">Teen mental health</h3>
+          <ul class="nhsuk-related-nav__list nhsuk-related-nav__list--sub">
+            <li class="nhsuk-related-nav__item">
+              <a class="nhsuk-related-nav__link" href="/conditions/stress-anxiety-depression/worried-about-your-teenager/">
+              Worried about your teenager?
+              </a>
+            </li>
+            <li class="nhsuk-related-nav__item">
+              <a class="nhsuk-related-nav__link" href="/conditions/stress-anxiety-depression/talking-to-your-teenager/">
+              Talking to your teenager
+              </a>
+            </li>
+            <li class="nhsuk-related-nav__item">
+              <a class="nhsuk-related-nav__link" href="/conditions/stress-anxiety-depression/teen-aggression-and-arguments/">
+              Teen aggression and arguments
+              </a>
+            </li>
+            <li class="nhsuk-related-nav__item">
+              <a class="nhsuk-related-nav__link" href="/conditions/stress-anxiety-depression/coping-with-your-teenager/">
+              Coping with your teenager
+              </a>
+            </li>
+            <li class="nhsuk-related-nav__item">
+              <a class="nhsuk-related-nav__link" href="/conditions/stress-anxiety-depression/bereavement-and-young-people/">
+              Bereavement and young people
+              </a>
+            </li>
+          </ul>
+          <h3 class="nhsuk-related-nav__sub-heading">Student mental health</h3>
+          <ul class="nhsuk-related-nav__list nhsuk-related-nav__list--sub">
+            <li class="nhsuk-related-nav__item">
+              <a class="nhsuk-related-nav__link" href="/conditions/stress-anxiety-depression/student-mental-health/">
+              Student mental health
+              </a>
+            </li>
+            <li class="nhsuk-related-nav__item">
+              <a class="nhsuk-related-nav__link" href="/conditions/stress-anxiety-depression/student-stress/">
+              Student stress: self-help tips
+              </a>
+            </li>
+            <li class="nhsuk-related-nav__item">
+              <a class="nhsuk-related-nav__link" href="/conditions/stress-anxiety-depression/tips-on-surviving-exams/">
+              Tips on surviving exams
+              </a>
+            </li>
+            <li class="nhsuk-related-nav__item">
+              <a class="nhsuk-related-nav__link" href="/conditions/stress-anxiety-depression/coping-with-exam-stress/">
+              Help your child beat exam stress
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </aside>
+    
+  </div>
 {% endblock %}
